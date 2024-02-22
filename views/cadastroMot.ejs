@@ -1,0 +1,43 @@
+<%- include('./partials/header.ejs') %>
+<body>
+
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Navbar (proporção 2) -->
+                <div class="col-md-1" id="navb">
+                    <section>
+                        <%- include('./partials/navbar.ejs') %> 
+                    </section>  
+                    <!-- Conteúdo da Navbar -->
+                </div>
+                
+                <!-- Div de Input (proporção 5) -->
+                <div class="col-md-6 bg-success" id="inputText">
+                    <form action="">
+                        <div class="md-6">
+                            <label for="campoTexto" class="form-label">Nome do motorista</label>
+                            <input type="text" class="form-control" id="campoTexto" placeholder="Digite algo...">
+                        </div>
+                        <div class="md-6">
+                            <label for="campoNumber" class="form-label">Matricula</label>
+                            <input type="number" class="form-control" id="campoNumber" placeholder="Digite algo...">
+                        </div>
+                        <div id="btn">
+                            <br>
+                        <button type="button" class="btn btn-primary">Cadastrar</button>
+                        </div>
+                        </form>
+                    <!-- Conteúdo da Div de Input -->
+                </div>
+                
+                <!-- Div de Texto (proporção 5) -->
+                <div class="col-md-5 bg-danger" id="showTable">
+                    <h1>dsjkahdsandjshaudhusjahda</h1>
+                    <!-- Conteúdo da Div de Texto -->
+                </div>
+            </div>
+        </div>
+
+        
+</body>
+<%- include('./partials/footer.ejs') %>
