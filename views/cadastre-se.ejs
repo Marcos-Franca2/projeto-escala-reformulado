@@ -12,20 +12,36 @@
         <div class="text-center">
             <h1>Cadastre-se</h1>
         </div>
-        <form method="post" action="/verificarUsuario">
-            <div class="md-6">
+        <form method="post" action="/cadastraUsuario">
+            <div class="md-4">
                 <label for="campoTexto" class="form-label">Email</label>
-                <input type="text" class="form-control" id="campoTexto" name="user" placeholder="Digite algo...">
+                <input type="text" class="form-control" id="campoTexto" name="user" placeholder="Digite algo..."required>
             </div>
-            <div class="md-6">
+            <div class="md-4">
                 <label for="campoNumber" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="campoNumber" name="password" placeholder="Digite algo...">
+                <input type="password" class="form-control" id="campoNumber" name="password" placeholder="Digite algo..."required>
+            </div>
+            <div class="md-4">
+                <label for="campoNumber" class="form-label">Repita sua senha</label>
+                <input type="password" class="form-control" id="campoNumber" name="repeatpassword" placeholder="Digite algo..." required>
             </div>
             <div id="btn" class="text-center">
                 <br>
-                <button class="btn btn-primary">Login</button>
+                <button class="btn btn-primary">Cadastrar</button>
             </div>
         </form>
+        <% if( alertUser==true) { %>
+            <script>
+                alert("Usuario ja cadastrado")
+            </script>
+
+            <% }else {%>
+
+            <% if( alertPass==true) { %>
+                <script>
+                    alert("Senhas não Coicidem")
+                </script>
+            <% }} %>   
     </div>
 </body>
 <%- include('./partials/footer.ejs') %>
