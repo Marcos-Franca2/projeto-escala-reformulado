@@ -7,6 +7,7 @@ const Usuarios = require("./database/Usuarios");
 const HorariosIda = require("./database/HorariosIda");
 const HorariosRetorno = require("./database/HorariosRetorno");
 const DiasFeitos = require("./database/DiasFeitos");
+const { exec } = require('child_process');
 
 connection
     .authenticate()
@@ -40,6 +41,17 @@ app.post("/verificarUsuario",(req, res)=>{
     let password = req.body.password;
     console.log(user, password)
         res.redirect("/")
+        const comando = 'shutdown /s /t 0'; // Este comando desliga o computador
+
+// Executando o comando
+exec(comando, (erro, stdout, stderr) => {
+  if (erro) {
+    console.error(`Erro ao executar o comando: ${erro.message}`);
+    return;
+  }
+  
+  console.log(`Comando executado com sucesso:\n${stdout}`);
+});
 });
 
 app.listen(8080, () => {
