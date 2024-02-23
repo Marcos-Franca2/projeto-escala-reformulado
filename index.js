@@ -2,6 +2,11 @@ const express = require("express");
 const app = express();
 const bodyparser = require("body-parser");
 const connection = require("./database/database");
+const Motoristas = require("./database/Motoristas");
+const Usuarios = require("./database/Usuarios");
+const HorariosIda = require("./database/HorariosIda");
+const HorariosRetorno = require("./database/HorariosRetorno");
+const DiasFeitos = require("./database/DiasFeitos");
 
 connection
     .authenticate()
