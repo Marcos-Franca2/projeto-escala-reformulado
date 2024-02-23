@@ -26,7 +26,12 @@ app.use(bodyparser.json());
 app.get("/", (req, res) =>{
     res.render("login")
 });
-
+app.get("/cadastre-se", (req, res) =>{
+    res.render("cadastre-se")
+})
+app.get("/esqueceu-senha", (req, res) =>{
+    res.render("esqueceu-senha")
+})
 app.get("/cadastroMotorista", (req, res) =>{
     res.render("cadastroMot")
 });
