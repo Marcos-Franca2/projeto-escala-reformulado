@@ -15,7 +15,7 @@ const HorariosRetorno = connection.define('horariosRetorno',{ // criando uma tbe
 });
  // impedindo de recriar a tabela
 HorariosRetorno.sync({force: false}).then(()=>{ // then te da um retorno no console
- console.log('tabela criada')
+
 }); 
 
 module.exports = HorariosRetorno

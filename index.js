@@ -30,6 +30,12 @@ app.get("/", (req, res) =>{
 app.get("/cadastroMotorista", (req, res) =>{
     res.render("cadastroMot")
 });
+app.post("/verificarUsuario",(req, res)=>{
+    let user = req.body.user;
+    let password = req.body.password;
+    console.log(user, password)
+        res.redirect("/")
+});
 
 app.listen(8080, () => {
     console.log("app rodando");

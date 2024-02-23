@@ -15,7 +15,7 @@ const Usuarios = connection.define('usuarios',{ // criando uma tbela no BD
 });
  // impedindo de recriar a tabela
  Usuarios.sync({force: false}).then(()=>{ // then te da um retorno no console
- console.log('tabela criada')
+
 }); 
 
 module.exports = Usuarios
