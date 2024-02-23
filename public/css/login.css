@@ -7,5 +7,10 @@ body{
     border-radius: 10px;
     color: white;
     width: 50vw;
-    height: 50vh;
+    height: 51vh;
+    margin-top: 25vh;
+}
+
+.forgotPassword{
+    margin-top: 10px;
 }
