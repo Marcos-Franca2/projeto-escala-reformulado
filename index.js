@@ -24,7 +24,7 @@ app.use(bodyparser.urlencoded({ extended: false })); // vai traduzir os dados em
 app.use(bodyparser.json());
 
 app.get("/", (req, res) =>{
-    res.render("index")
+    res.render("login")
 });
 
 app.get("/cadastroMotorista", (req, res) =>{
