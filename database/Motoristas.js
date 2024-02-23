@@ -15,7 +15,7 @@ const Motoristas = connection.define('motoristas',{ // criando uma tbela no BD
 });
  // impedindo de recriar a tabela
 Motoristas.sync({force: false}).then(()=>{ // then te da um retorno no console
- console.log('tabela criada')
+
 }); 
 
 module.exports = Motoristas

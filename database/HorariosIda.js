@@ -15,7 +15,7 @@ const HorariosIda = connection.define('horariosIda',{ // criando uma tbela no BD
 });
  // impedindo de recriar a tabela
 HorariosIda.sync({force: false}).then(()=>{ // then te da um retorno no console
- console.log('tabela criada')
+
 }); 
 
 module.exports = HorariosIda

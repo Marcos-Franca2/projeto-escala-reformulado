@@ -27,7 +27,6 @@ const DiasFeitos = connection.define('DiasFeitos', { // criando uma tbela no BD
 });
 // impedindo de recriar a tabela
 DiasFeitos.sync({ force: false }).then(() => { // then te da um retorno no console
-    console.log('tabela criada')
 });
 
 module.exports = DiasFeitos
