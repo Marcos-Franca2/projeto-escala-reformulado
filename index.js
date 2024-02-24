@@ -24,19 +24,46 @@ app.use(bodyparser.urlencoded({ extended: false })); // vai traduzir os dados em
 app.use(bodyparser.json());
 
 app.get("/", (req, res) => {
-    res.render("login")
+    let alertUser = false
+    let alertPass = false
+    res.render("login",{alertPass: alertPass, alertUser: alertUser })
 });
+
+app.post("/verificarUsuario", (req, res) => {
+    let user = req.body.user;
+    let password = req.body.password;
+    
+    Usuarios.findOne({
+        where: { user: user }
+    }).then(teste => {
+        if (teste != undefined) {
+            let alertUser = false
+
+            if(teste.password === password){
+                let alertPass = false
+                res.redirect("/cadastroMotorista")
+            }else{
+                let alertPass = true
+                res.render("login",{alertPass: alertPass, alertUser: alertUser})
+            }
+
+        }else{
+            let alertUser = true
+            let alertPass = false
+            res.render("login",{alertPass: alertPass, alertUser: alertUser })
+        }
+    });
+
+
+    
+});
+
+// cadastros e tratamento de cadastros
 app.get("/cadastre-se", (req, res) => {
     let alertUser = false 
     let alert = false
     res.render("cadastre-se", { alertPass: alert, alertUser: alertUser })
 })
-app.get("/esqueceu-senha", (req, res) => {
-    res.render("esqueceu-senha")
-})
-app.get("/cadastroMotorista", (req, res) => {
-    res.render("cadastroMot")
-});
 app.post("/cadastraUsuario", (req, res) => {
     let user = req.body.user
     let password = req.body.password
@@ -69,12 +96,20 @@ app.post("/cadastraUsuario", (req, res) => {
 
 });
 
-app.post("/verificarUsuario", (req, res) => {
-    let user = req.body.user;
-    let password = req.body.password;
-    console.log(user, password)
-    res.redirect("/")
+
+// procurar metodo de recuperacao de senha (implantar)
+app.get("/esqueceu-senha", (req, res) => {
+    res.render("esqueceu-senha")
+})
+
+
+
+app.get("/cadastroMotorista", (req, res) => {
+    res.render("cadastroMot")
 });
+
+
+
 
 app.listen(8080, () => {
     console.log("app rodando");
