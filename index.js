@@ -23,57 +23,89 @@ app.use(express.static('public'));// ultilizando arquivos estaticos
 app.use(bodyparser.urlencoded({ extended: false })); // vai traduzir os dados em JS o dado que o form enviou
 app.use(bodyparser.json());
 
-app.get("/", (req, res) =>{
-    res.render("login")
-});
-app.get("/cadastre-se", (req, res) =>{
-    res.render("cadastre-se")
-})
-app.get("/esqueceu-senha", (req, res) =>{
-    res.render("esqueceu-senha")
-})
-app.get("/cadastroMotorista", (req, res) =>{
-    res.render("cadastroMot")
-});
-app.post("/cadastraUsuario",(req, res)=>{
- let user = req.body.user
- let password = req.body.password
- let repeat = req.body.repeatpassword
-
- // testando se o usuario ja foi cadastrado alguma vez
-
- Usuarios.findOne({
-    where: {user: user}
- }).then(teste=>{
-    if (teste != undefined){
-        let alertUser = true
-        res.render("cadastre-se",{alertUser: alertUser})
-    }else{
-        let alertUser = false
-
-        // testando se as senhas coicidem
- if(password === repeat){
-    Usuarios.create({
-        user: user,
-        password : password
-    }).then(()=>{
-        res.redirect("/")
-    });
-    console.log("cadastrado")
-}else{
-    let alert = true
-    res.render("cadastre-se",{alertPass: alert,alertUser: alertUser })
- }
-    }
- })
-
+app.get("/", (req, res) => {
+    let alertUser = false
+    let alertPass = false
+    res.render("login",{alertPass: alertPass, alertUser: alertUser })
 });
 
-app.post("/verificarUsuario",(req, res)=>{
+app.post("/verificarUsuario", (req, res) => {
     let user = req.body.user;
     let password = req.body.password;
-    console.log(user, password)
-        res.redirect("/")
+    
+    Usuarios.findOne({
+        where: { user: user }
+    }).then(teste => {
+        if (teste != undefined) {
+            let alertUser = false
+
+            if(teste.password === password){
+                let alertPass = false
+                res.redirect("/cadastroMotorista")
+            }else{
+                let alertPass = true
+                res.render("login",{alertPass: alertPass, alertUser: alertUser})
+            }
+
+        }else{
+            let alertUser = true
+            let alertPass = false
+            res.render("login",{alertPass: alertPass, alertUser: alertUser })
+        }
+    });
+
+
+    
+});
+
+// cadastros e tratamento de cadastros
+app.get("/cadastre-se", (req, res) => {
+    let alertUser = false 
+    let alert = false
+    res.render("cadastre-se", { alertPass: alert, alertUser: alertUser })
+})
+app.post("/cadastraUsuario", (req, res) => {
+    let user = req.body.user
+    let password = req.body.password
+    let repeat = req.body.repeatpassword
+
+    // testando se o usuario ja foi cadastrado alguma vez
+    Usuarios.findOne({
+        where: { user: user }
+    }).then(teste => {
+        if (teste != undefined) {
+            let alertUser = true
+            res.render("cadastre-se", { alertUser: alertUser })
+        } else {
+            let alertUser = false
+            // testando se as senhas coicidem
+            if (password === repeat) {
+                Usuarios.create({
+                    user: user,
+                    password: password
+                }).then(() => {
+                    res.redirect("/")
+                });
+                console.log("cadastrado")
+            } else {
+                let alert = true
+                res.render("cadastre-se", { alertPass: alert, alertUser: alertUser })
+            }
+        }
+    })
+
+});
+
+
+// procurar metodo de recuperacao de senha (implantar)
+app.get("/esqueceu-senha", (req, res) => {
+    res.render("esqueceu-senha")
+})
+
+
+
+app.get("/cadastroMotorista", (req, res) => {
+    res.render("cadastroMot")
 });
 
 
