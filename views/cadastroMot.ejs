@@ -14,14 +14,14 @@
 
                 <!-- Div de Input (proporção 5) -->
                 <div class="col-md-6 bg-success" id="inputText">
-                    <form action="">
+                    <form method="post" action="/cadastradoSuccess">
                         <div class="md-6">
                             <label for="campoTexto" class="form-label">Nome do motorista</label>
-                            <input type="text" class="form-control" id="campoTexto" placeholder="Digite algo...">
+                            <input type="text" class="form-control" id="campoTexto" placeholder="Digite algo..." name="motorista" required>
                         </div>
                         <div class="md-6">
                             <label for="campoNumber" class="form-label">Matricula</label>
-                            <input type="number" class="form-control" id="campoNumber" placeholder="Digite algo...">
+                            <input type="number" class="form-control" id="campoNumber" placeholder="Digite algo..." name="matricula" required>
                         </div>
                         <div id="btn">
                             <br>
@@ -33,9 +33,21 @@
 
                 <!-- Div de Texto (proporção 5) -->
                 <div class="col-md-5 bg-danger" id="showTable">
-                    <H1>SAUSHAHDSAFAS</H1>
-                    <!-- Conteúdo da Div de Texto -->
+                <hr>
+                <h3>Motoristas Cadastrados</h3>
+                <hr>
+                <div class="scrollbar">
+
+                    <% motoristas.forEach(motorista => {%>
+               
+                        <div class="card">
+                            <div class="card-body">
+                                <label><%= motorista.name +"    "+ motorista.matricula %></label>
+                            </div>
+                    </div>
+                    <% })%>
                 </div>
+            </div>
             </div>
         </div>
 

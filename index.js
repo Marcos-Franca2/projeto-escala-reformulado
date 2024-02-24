@@ -32,7 +32,7 @@ app.use(session({
   saveUninitialized: true,
 }));
 
-// middleware de utenticação
+// middleware de autenticação
 function autenticar(req, res, next) {
     if (req.session.usuario) {
       next();
@@ -125,9 +125,31 @@ app.get("/esqueceu-senha", (req, res) => {
 
 
 app.get("/cadastroMotorista",autenticar, (req, res) => {
-    res.render("cadastroMot")
+    Motoristas.findAll({raw:true, order:[["matricula","ASC"]]}
+    ).then(Motoristas=>{
+        res.render("cadastroMot",{motoristas: Motoristas})  
+    });
 });
+app.post("/cadastradoSuccess",(req, res)=>{
+    let name = req.body.motorista;
+    let matricula = req.body.matricula;
+    name = name.toUpperCase();
+    Motoristas.findOne({
+        where: {name: name}
+    }).then(motorista=>{
+        if (motorista == undefined){
 
+            Motoristas.create({
+                name: name,
+                matricula: matricula
+            }).then(() => {
+                res.redirect("/cadastroMotorista");
+            });
+        }else{
+            res.redirect("/cadastroMotorista");
+        } 
+    });
+});
 
 
 
