@@ -32,6 +32,18 @@
                 <button class="btn btn-primary">Login</button>
             </div>
         </form>
+        <% if( alertUser==true) { %>
+            <script>
+                alert("Usuario não cadastrado")
+            </script>
+
+            <% }else {%>
+
+            <% if( alertPass==true) { %>
+                <script>
+                    alert("Senhas Incorreta")
+                </script>
+            <% }} %>  
     </div>
 </body>
 <%- include('./partials/footer.ejs') %>
