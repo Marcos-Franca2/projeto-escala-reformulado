@@ -44,3 +44,6 @@
     padding: 0 10px; 
     font-weight: bold;
 }
+.selected-card {
+    background-color: #cfe2f3; /* Cor de fundo quando selecionado */
+  }

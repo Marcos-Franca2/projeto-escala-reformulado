@@ -40,11 +40,13 @@
 
                     <% motoristas.forEach(motorista => {%>
                
-                        <div class="card">
+                        <div class="card" id="card<%=motorista.matricula %>">
+                            <label class="card-check-label" for="<%=motorista.matricula %>" >
                             <div class="card-body">
-                                <label><%= motorista.name +"    "+ motorista.matricula %></label>
+                                <input class="check-card-input" type="checkbox" id="<%=motorista.matricula %>" onchange="changeCardColor('card<%=motorista.matricula %>','<%=motorista.matricula %>')"hidden> <%= motorista.name +"    "+ motorista.matricula %></input>
                             </div>
-                    </div>
+                        </label>
+                        </div>
                     <% })%>
                 </div>
             </div>
@@ -54,3 +56,18 @@
 
     </body>
     <%- include('./partials/footer.ejs') %>
+    <script>
+// função para estilzar a checkbox selecionada dinamicamente
+    function changeCardColor(cardId, checkboxId) {
+    let card = document.getElementById(cardId);
+    let checkbox = document.getElementById(checkboxId);
+
+
+    if (checkbox.checked) {
+      card.classList.add('selected-card');
+    } else {
+      card.classList.remove('selected-card');
+    }
+  }
+
+      </script>

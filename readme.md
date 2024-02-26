@@ -13,5 +13,5 @@ fazer com qu isso seja menos invasivo como por exemplo escrever em vermelho em b
 - implementar apresentação dos motoristas ja cadastrados na tela de cadastro de motoristas. ok
 - depois que for criado o botão de logouf criar o excript para fechar o autenticador.
 - implementar botão de manter-me logado ou pelo menos de lembra usuaio e senha .
-
+- organizar uma forma dinamica para importar scripst com funções
 
