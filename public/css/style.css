@@ -4,7 +4,21 @@
     background-color: #0F181F;
    
 }
-
+@media screen and (max-width: 767px){
+    .navbar{
+        width: 100vw;
+        height: 10vh;
+    }
+    #navDropbox{
+        background-color: #0F181F;
+        width: 25vw;
+        padding: 2vw;
+        margin-top: 1vh;
+    }
+    .container-fluid{
+        margin-top: 10vh;
+    }
+}
 .container-fluid{
     height: 100vh;
 }
