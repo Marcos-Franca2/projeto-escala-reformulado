@@ -9,6 +9,11 @@
         width: 100vw;
         height: 10vh;
     }
+    #navbar{
+        width: 100vw;
+        height: 10vh; 
+
+    }
     #navDropbox{
         background-color: #0F181F;
         width: 25vw;
@@ -18,12 +23,18 @@
     .container-fluid{
         margin-top: 10vh;
     }
+    .custom-input{
+        width: 80vw;
+    }
 }
 .container-fluid{
     height: 100vh;
 }
 .row{
     height: 100vh;
+}
+.custom-input{
+    width: 40vw;
 }
 #inputText form .md-6{
     width: 30rem;
@@ -34,6 +45,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 #btn{
     display: flex;
