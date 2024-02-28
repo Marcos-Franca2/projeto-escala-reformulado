@@ -13,15 +13,17 @@
                 </div>
 
                 <!-- Div de Input (proporção 5) -->
-                <div class="col-md-6 bg-success" id="inputText">
-                    <form action="">
-                        <div class="md-6">
+                <div class="col-md-6 bg-success top-spacing" id="inputText">
+                    <form method="post" action="/cadastradoSuccess">
+                        <div class="">
                             <label for="campoTexto" class="form-label">Nome do motorista</label>
-                            <input type="text" class="form-control" id="campoTexto" placeholder="Digite algo...">
+                            <input type="text" class="form-control custom-input" id="campoTexto" placeholder="Digite algo..."
+                                name="motorista" required>
                         </div>
-                        <div class="md-6">
+                        <div class="">
                             <label for="campoNumber" class="form-label">Matricula</label>
-                            <input type="number" class="form-control" id="campoNumber" placeholder="Digite algo...">
+                            <input type="number" class="form-control custom-input" id="campoNumber" placeholder="Digite algo..."
+                                name="matricula" required>
                         </div>
                         <div id="btn">
                             <br>
@@ -33,12 +35,44 @@
 
                 <!-- Div de Texto (proporção 5) -->
                 <div class="col-md-5 bg-danger" id="showTable">
-                    <H1>SAUSHAHDSAFAS</H1>
-                    <!-- Conteúdo da Div de Texto -->
+                    <hr>
+                    <h3>Motoristas Cadastrados</h3>
+                    <hr>
+                    <div class="scrollbar">
+
+                        <% motoristas.forEach(motorista=> {%>
+
+                            <div class="card" id="card<%=motorista.matricula %>">
+                                <label class="card-check-label" for="<%=motorista.matricula %>">
+                                    <div class="card-body">
+                                        <input class="check-card-input" type="checkbox" id="<%=motorista.matricula %>"
+                                            onchange="changeCardColor('card<%=motorista.matricula %>','<%=motorista.matricula %>')"
+                                            hidden>
+                                        <%= motorista.name +" "+ motorista.matricula %></input>
+                            </div>
+                        </label>
+                        </div>
+                    <% })%>
                 </div>
+            </div>
             </div>
         </div>
 
 
     </body>
     <%- include('./partials/footer.ejs') %>
+    <script>
+        // função para estilzar a checkbox selecionada dinamicamente
+        function changeCardColor(cardId, checkboxId) {
+            let card = document.getElementById(cardId);
+            let checkbox = document.getElementById(checkboxId);
+
+
+            if (checkbox.checked) {
+                card.classList.add('selected-card');
+            } else {
+                card.classList.remove('selected-card');
+            }
+        }
+
+    </script>

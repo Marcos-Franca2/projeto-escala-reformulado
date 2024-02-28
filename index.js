@@ -7,6 +7,8 @@ const Usuarios = require("./database/Usuarios");
 const HorariosIda = require("./database/HorariosIda");
 const HorariosRetorno = require("./database/HorariosRetorno");
 const DiasFeitos = require("./database/DiasFeitos");
+const port = 8080;
+const session = require('express-session');
 
 connection
     .authenticate()
@@ -19,9 +21,26 @@ connection
 
 
 app.set('view engine', 'ejs');
+
 app.use(express.static('public'));// ultilizando arquivos estaticos 
 app.use(bodyparser.urlencoded({ extended: false })); // vai traduzir os dados em JS o dado que o form enviou
 app.use(bodyparser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(session({
+  secret: '123456', // Troque para uma string segura
+  resave: false,
+  saveUninitialized: true,
+}));
+
+// middleware de autenticação
+function autenticar(req, res, next) {
+    if (req.session.usuario) {
+      next();
+    } else {
+      res.redirect('/');
+    }
+  }
+
 
 app.get("/", (req, res) => {
     let alertUser = false
@@ -41,6 +60,7 @@ app.post("/verificarUsuario", (req, res) => {
 
             if(teste.password === password){
                 let alertPass = false
+                req.session.usuario = user;
                 res.redirect("/cadastroMotorista")
             }else{
                 let alertPass = true
@@ -104,10 +124,32 @@ app.get("/esqueceu-senha", (req, res) => {
 
 
 
-app.get("/cadastroMotorista", (req, res) => {
-    res.render("cadastroMot")
+app.get("/cadastroMotorista",autenticar, (req, res) => {
+    Motoristas.findAll({raw:true, order:[["matricula","ASC"]]}
+    ).then(Motoristas=>{
+        res.render("cadastroMot",{motoristas: Motoristas})  
+    });
 });
+app.post("/cadastradoSuccess",(req, res)=>{
+    let name = req.body.motorista;
+    let matricula = req.body.matricula;
+    name = name.toUpperCase();
+    Motoristas.findOne({
+        where: {name: name}
+    }).then(motorista=>{
+        if (motorista == undefined){
 
+            Motoristas.create({
+                name: name,
+                matricula: matricula
+            }).then(() => {
+                res.redirect("/cadastroMotorista");
+            });
+        }else{
+            res.redirect("/cadastroMotorista");
+        } 
+    });
+});
 
 
 
