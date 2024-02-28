@@ -1,0 +1,37 @@
+.navbar{
+    width: 10vw;
+    height: 100vh;
+    background-color: #0F181F;
+    
+}
+@media screen and (max-width: 767px){
+    .navbar.navbar-expand-lg.navbar-dark.fixed-top{
+        min-height: 60px;
+    }
+    #navb{
+        position: absolute;
+
+    }
+    .navbar{
+        width: 100vw;
+        height: 10vh;
+    }
+    #navbar{
+        width: 100vw;
+        height: 10vh; 
+
+    }
+    #navDropbox{
+        background-color: #0F181F;
+        width: 25vw;
+        padding: 2vw;
+        margin-top: 1vh;
+    }
+    .container-fluid{
+        margin-top: 10vh;
+    }
+}
+
+.container-fluid{
+    height: 100vh;
+}
