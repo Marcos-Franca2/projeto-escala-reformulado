@@ -2,9 +2,22 @@
     width: 10vw;
     height: 100vh;
     background-color: #0F181F;
-   
+    
 }
+
 @media screen and (max-width: 767px){
+    .navbar.navbar-expand-lg.navbar-dark.fixed-top{
+        min-height: 60px;
+    }
+
+    #input-text{
+        margin-top: 60px;
+        position: relative;
+    }
+    #navb{
+        position: absolute;
+
+    }
     .navbar{
         width: 100vw;
         height: 10vh;
