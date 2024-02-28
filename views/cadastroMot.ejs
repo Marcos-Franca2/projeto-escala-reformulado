@@ -45,7 +45,7 @@
                             <div class="card" id="card<%=motorista.matricula %>">
                                 <label class="card-check-label" for="<%=motorista.matricula %>">
                                     <div class="card-body">
-                                        <input class="check-card-input" type="checkbox" id="<%=motorista.matricula %>"
+                                        <input class="check-card-input text-nowrap" type="checkbox" id="<%=motorista.matricula %>"
                                             onchange="changeCardColor('card<%=motorista.matricula %>','<%=motorista.matricula %>')"
                                             hidden>
                                         <%= motorista.name +" "+ motorista.matricula %></input>

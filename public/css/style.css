@@ -15,6 +15,7 @@
     #input-text{
         margin-top: 60px;
         position: relative;
+
     }
     #navb{
         position: absolute;
@@ -58,6 +59,7 @@
 #inputText form .md-6{
     width: 30rem;
     color: black;
+
 }
 
 #inputText{
@@ -67,6 +69,12 @@
     justify-content: center;
     padding-bottom: 20px;
     padding-top: 20px;
+    background-color: #1B242A;
+    color: white;
+}
+#showTable{
+    background-color: #0F181F;
+    color: white;
 }
 #btn{
     display: flex;

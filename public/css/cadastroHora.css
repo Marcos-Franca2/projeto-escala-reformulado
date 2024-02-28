@@ -1,5 +1,5 @@
 .navbar{
-    width: 10vw;
+    width: 8.33%;
     height: 100vh;
     background-color: #0F181F;
     
@@ -34,4 +34,56 @@
 
 .container-fluid{
     height: 100vh;
+}
+.row{
+    height: 100vh;
+} 
+#container-central{
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+}
+#container-rigth{
+    background-color: red;
+}
+#form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+#formButton{
+    margin: 0.5rem;
+    border-radius: 11px;
+    width: 3rem;
+}
+
+#container-central{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+
+.diasSemana{
+    margin-bottom: 2rem;
+}
+#showTable{
+    margin-top: 8rem;
+}
+#container-table{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+#container-table ul{
+    list-style-type: none;
+    
+
+}
+#card-table{
+    width: 40rem;
 }
