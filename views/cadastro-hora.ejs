@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/cadastroHora.css">
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Navbar (proporção 2) -->
+            <div class="col-md-1" id="navb">
+                <section>
+                    <%- include('./partials/navbar.ejs') %>
+                </section>
+                <!-- Conteúdo da Navbar -->
+            </div>
+
+            <!-- Div de Input (proporção 5) -->
+            <div class="col-md-6 top-spacing" id="container-central">
+                <form method="post" id="form"action="">
+
+                    <div class="diasSemana">
+                        <h2>Selecione o dia:</h2>
+                            <button id="formButton">Seg</button>
+                            <button id="formButton">Ter</button>
+                            <button id="formButton">Qua</button>
+                            <button id="formButton">Qui</button>
+                            <button id="formButton">Sex</button>
+                            <button id="formButton">Sab</button>
+                            <button id="formButton">Dom</button>                            
+                        </div>
+                </form>
+                <form id="horarioRetornoForm"action="">
+                    <div class="addTime">
+                        <input type="time">
+                        <button>Cadastrar Novo Horario</button>
+                        <input type="checkbox" name="" id="">Horario de Retorno </input>
+                    </div>     
+                 <form>
+                
+                    <div class="">
+                        <div class="col-md-5" id="showTable">
+  
+                            <div class="scrollbar">
+                                    <div class="card" id="card-table">
+                                        <H5>HORARIOS DO DIA</H5>
+                                        <div id="container-table">   
+                                            <ul class="horarios-ida"> 
+                                                IDA
+                                                <li>11:00</li>
+                                                <li>12:00</li>
+                                                <li>13:00</li>    
+                                            </ul>                                     
+                                            <ul class="horarios-retorno"> 
+                                                RETORNOS                                               
+                                                <li>11:00</li>
+                                                <li>12:00</li>
+                                                <li>13:00</li>
+                                            </ul>                                     
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="btn">
+
+                    </div>
+                <!-- Conteúdo da Div de Input -->
+            </div>
+
+            <!-- Div de Texto (proporção 5) -->
+            <div class="col-md-5" id="container-rigt">
+
+                <div class="scrollbar">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<%- include('./partials/footer.ejs') %>
+<script>
+    // função para estilzar a checkbox selecionada dinamicamente
+    function changeCardColor(cardId, checkboxId) {
+        let card = document.getElementById(cardId);
+        let checkbox = document.getElementById(checkboxId);
+
+
+        if (checkbox.checked) {
+            card.classList.add('selected-card');
+        } else {
+            card.classList.remove('selected-card');
+        }
+    }
+
+</script>

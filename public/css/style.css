@@ -2,9 +2,25 @@
     width: 10vw;
     height: 100vh;
     background-color: #0F181F;
-   
+    
 }
+
+
+
 @media screen and (max-width: 767px){
+    .navbar.navbar-expand-lg.navbar-dark.fixed-top{
+        min-height: 60px;
+    }
+
+    #input-text{
+        margin-top: 60px;
+        position: relative;
+
+    }
+    #navb{
+        position: absolute;
+
+    }
     .navbar{
         width: 100vw;
         height: 10vh;
@@ -27,6 +43,10 @@
         width: 80vw;
     }
 }
+
+
+
+
 .container-fluid{
     height: 100vh;
 }
@@ -38,6 +58,8 @@
 }
 #inputText form .md-6{
     width: 30rem;
+    color: black;
+
 }
 
 #inputText{
@@ -47,6 +69,12 @@
     justify-content: center;
     padding-bottom: 20px;
     padding-top: 20px;
+    background-color: #1B242A;
+    color: white;
+}
+#showTable{
+    background-color: #0F181F;
+    color: white;
 }
 #btn{
     display: flex;
@@ -64,6 +92,7 @@
     height: 30px;
     display: flex;
     margin-bottom: 5px;
+    color: black;
 }
 
 .card-body {
@@ -72,5 +101,6 @@
     font-weight: bold;
 }
 .selected-card {
-    background-color: #cfe2f3; /* Cor de fundo quando selecionado */
+    background-color: #0099FF; /* Cor de fundo quando selecionado */
   }
+

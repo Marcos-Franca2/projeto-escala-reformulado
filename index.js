@@ -151,7 +151,9 @@ app.post("/cadastradoSuccess",(req, res)=>{
     });
 });
 
-
+app.get("/cadastroHora",(req, res)=>{
+    res.render("cadastro-hora")
+});
 
 app.listen(8080, () => {
     console.log("app rodando");
