@@ -14,6 +14,8 @@
 
                 <!-- Div de Input (proporção 5) -->
                 <div class="col-md-6 top-spacing" id="inputText">
+                    <h3>CADASTRAR NOVO MOTORISTA</h3>
+                    <br>
                     <form method="post" action="/cadastradoSuccess">
                         <div class="">
                             <label for="campoTexto" class="form-label">Nome do motorista</label>
@@ -37,7 +39,10 @@
                 <div class="col-md-5" id="showTable">
 
                         <hr>
-                        <h3>Motoristas Cadastrados</h3> <button class="btn btn-danger" onclick="deleteCardSelect()">Deletar Motorista</button>
+                        <h3>Motoristas Cadastrados</h3> 
+                        <p>Total de motoristas cadastrados = <%= motoristas.length %></p>
+                        
+                        <button class="btn btn-danger" onclick="deleteCardSelect()">Deletar Motorista</button>
                         <hr>
                         <div class="scrollbar">
                             

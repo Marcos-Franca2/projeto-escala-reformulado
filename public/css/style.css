@@ -85,7 +85,7 @@
 
 
 .scrollbar {
-  height: 400px; /* Defina a altura desejada da div */
+  height: 350px; /* Defina a altura desejada da div */
   overflow-y: auto; /* Adiciona a barra de rolagem quando necessario */
 }
 .card {
