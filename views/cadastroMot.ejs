@@ -35,44 +35,31 @@
 
                 <!-- Div de Texto (proporção 5) -->
                 <div class="col-md-5" id="showTable">
-                    <hr>
-                    <h3>Motoristas Cadastrados</h3>
-                    <hr>
-                    <div class="scrollbar">
 
+                        <hr>
+                        <h3>Motoristas Cadastrados</h3> <button class="btn btn-danger" onclick="deleteCardSelect()">Deletar Motorista</button>
+                        <hr>
+                        <div class="scrollbar">
+                            
                         <% motoristas.forEach(motorista=> {%>
-
+                            
                             <div class="card" id="card<%=motorista.matricula %>">
                                 <label class="card-check-label" for="<%=motorista.matricula %>">
                                     <div class="card-body">
                                         <input class="check-card-input text-nowrap" type="checkbox" id="<%=motorista.matricula %>"
-                                            onchange="changeCardColor('card<%=motorista.matricula %>','<%=motorista.matricula %>')"
-                                            hidden>
+                                        onclick="changeCardColor('card<%=motorista.matricula %>','<%=motorista.matricula %>')"
+                                        hidden>
                                         <%= motorista.name +" "+ motorista.matricula %></input>
-                                     </div>
+                                    </div>
                                 </label>
-                             </div>
+                            </div>
                                       <% })%>
                         </div>
+                    </div>
+                </div>
             </div>
-            </div>
-        </div>
-
+            
 
     </body>
     <%- include('./partials/footer.ejs') %>
-    <script>
-        // função para estilzar a checkbox selecionada dinamicamente
-        function changeCardColor(cardId, checkboxId) {
-            let card = document.getElementById(cardId);
-            let checkbox = document.getElementById(checkboxId);
-
-
-            if (checkbox.checked) {
-                card.classList.add('selected-card');
-            } else {
-                card.classList.remove('selected-card');
-            }
-        }
-
-    </script>
+ <script src="/js/cadastroMot.js"></script> 

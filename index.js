@@ -151,6 +151,23 @@ app.post("/cadastradoSuccess",(req, res)=>{
     });
 });
 
+app.delete('/deletarMotorista/:matricula', async (req, res) => {
+    try {
+      const matricula = req.params.matricula;
+      await Motoristas.destroy({
+        where: {
+          matricula: matricula,
+        },
+      });
+      console.log("Excluído Motorista", matricula);
+      res.redirect("/cadastroMotorista");
+    } catch (error) {
+      console.error('Erro ao excluir motorista:', error);
+      res.redirect("/cadastroMotorista");
+    }
+
+});
+
 app.get("/cadastroHora",(req, res)=>{
     res.render("cadastro-hora")
 });
