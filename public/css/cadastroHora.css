@@ -35,10 +35,10 @@
         width: 100vw;
     }
     #container-finish{
-        width: 100vw;
+        width: 100vh;
         display: flex;
         align-items: center;
-        flex-wrap: wrap;
+        
     }
 }
 
@@ -60,7 +60,13 @@
     background-color: red;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
+    overflow-wrap: break-word;
+}   
+.teste{
+    word-break: break-all; /* LOOK THIS BEATIFUL TAG, PRA NAO DIZER OUTRA COISA */
+
 }
 #form{
     display: flex;
