@@ -4,8 +4,73 @@
     background-color: #0F181F;
     
 }
-@media screen and (max-width: 767px){
+.container-central{
+    height: 100vh;
+}
+.row{
+    height: 100vh;
+    
+} 
+#container-central{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: aqua;
+    flex-direction: column;
+}
+#container-finish{
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    word-break: break-all;
+}       
 
+#form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+#formButton{
+    margin: 0.5rem;
+    border-radius: 11px;
+    width: 4rem;
+}
+
+.diasSemana{
+    margin-bottom: 2rem;
+}
+#showTable{
+    margin-top: 8rem;
+
+}
+
+.container-table{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    width: 45vw;
+    text-align: center;
+}
+.container-table ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+@media screen and (max-width: 767px){
+    .container-table{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2rem;
+        width: 100vw;
+    }
     .navbar.navbar-expand-lg.navbar-dark{
         min-height: 60px;
     }
@@ -40,62 +105,4 @@
         align-items: center;
         
     }
-}
-
-
-.container-central{
-    height: 100vh;
-}
-.row{
-    height: 100vh;
-} 
-#container-central{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: aqua;
-    flex-direction: column;
-}
-#container-finish{
-    background-color: red;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    overflow-wrap: break-word;
-}   
-.teste{
-    word-break: break-all; /* LOOK THIS BEATIFUL TAG, PRA NAO DIZER OUTRA COISA */
-
-}
-#form{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 3rem;
-}
-#formButton{
-    margin: 0.5rem;
-    border-radius: 11px;
-    width: 3rem;
-}
-
-.diasSemana{
-    margin-bottom: 2rem;
-}
-#showTable{
-    margin-top: 8rem;
-
-}
-
-#container-table{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    
-}
-#container-table ul{
-    list-style-type: none;
-    
-
 }
