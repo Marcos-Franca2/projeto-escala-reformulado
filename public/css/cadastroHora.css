@@ -5,7 +5,8 @@
     
 }
 @media screen and (max-width: 767px){
-    .navbar.navbar-expand-lg.navbar-dark.fixed-top{
+
+    .navbar.navbar-expand-lg.navbar-dark{
         min-height: 60px;
     }
     #navb{
@@ -30,21 +31,36 @@
     .container-fluid{
         margin-top: 10vh;
     }
+    #container-central{
+        width: 100vw;
+    }
+    #container-finish{
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
 }
 
-.container-fluid{
+
+.container-central{
     height: 100vh;
 }
 .row{
     height: 100vh;
 } 
 #container-central{
-    justify-content: center;
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
     background-color: aqua;
+    flex-direction: column;
 }
-#container-rigth{
+#container-finish{
     background-color: red;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 #form{
     display: flex;
@@ -58,21 +74,14 @@
     width: 3rem;
 }
 
-#container-central{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    margin-bottom: 2rem;
-}
-
-
 .diasSemana{
     margin-bottom: 2rem;
 }
 #showTable{
     margin-top: 8rem;
+
 }
+
 #container-table{
     display: flex;
     align-items: center;
@@ -83,7 +92,4 @@
     list-style-type: none;
     
 
-}
-#card-table{
-    width: 40rem;
 }
