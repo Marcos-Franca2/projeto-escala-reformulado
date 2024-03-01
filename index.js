@@ -9,6 +9,7 @@ const HorariosRetorno = require("./database/HorariosRetorno");
 const DiasFeitos = require("./database/DiasFeitos");
 const port = 8080;
 const session = require('express-session');
+const {Op} = require('sequelize');
 
 connection
     .authenticate()
@@ -123,7 +124,7 @@ app.get("/esqueceu-senha", (req, res) => {
 })
 
 
-
+// cadastro de motoristas/exclusão
 app.get("/cadastroMotorista",autenticar, (req, res) => {
     Motoristas.findAll({raw:true, order:[["matricula","ASC"]]}
     ).then(Motoristas=>{
@@ -135,8 +136,8 @@ app.post("/cadastradoSuccess",(req, res)=>{
     let matricula = req.body.matricula;
     name = name.toUpperCase();
     Motoristas.findOne({
-        where: {name: name}
-    }).then(motorista=>{
+        where:{ [Op.or]: [{name: name},{matricula: matricula}
+    ]}}).then(motorista=>{
         if (motorista == undefined){
 
             Motoristas.create({
@@ -150,7 +151,6 @@ app.post("/cadastradoSuccess",(req, res)=>{
         } 
     });
 });
-
 app.delete('/deletarMotorista/:matricula', async (req, res) => {
     try {
       const matricula = req.params.matricula;
@@ -167,6 +167,8 @@ app.delete('/deletarMotorista/:matricula', async (req, res) => {
     }
 
 });
+
+
 
 app.get("/cadastroHora",(req, res)=>{
     res.render("cadastro-hora")
