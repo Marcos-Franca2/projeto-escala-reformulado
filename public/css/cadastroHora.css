@@ -15,16 +15,18 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: aqua;
+    background-color: #1B242A;
     flex-direction: column;
+    color: white;
 }
 #container-finish{
-    background-color: red;
+    background-color: #0F181F;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     word-break: break-all;
+    color: white;
 }       
 
 #form{

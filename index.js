@@ -170,7 +170,7 @@ app.delete('/deletarMotorista/:matricula', async (req, res) => {
 
 
 
-app.get("/cadastroHora",(req, res)=>{
+app.get("/cadastroHora", autenticar, (req, res)=>{
     res.render("cadastro-hora")
 });
 
