@@ -23,28 +23,26 @@
 
             <!-- Div de Input (proporção 5) -->
             <div class="col-md-6" id="container-central">
-                <form method="post" id="form" action="">
 
                     <div class="diasSemana">
-                        <h2>Selecione o dia:</h2>
-                        <button id="formButton">Seg</button>
-                        <button id="formButton">Ter</button>
-                        <button id="formButton">Qua</button>
-                        <button id="formButton">Qui</button>
-                        <button id="formButton">Sex</button>
-                        <button id="formButton">Sab</button>
-                        <button id="formButton">Dom</button>
-                    </div>
-                </form>
-                <form id="horarioRetornoForm" action="">
+                        <h2>Selecione o dia</h2>
+                        <button type="button" class="btn btn-outline-light custom-btn" id="Seg" name="Seg" onclick="selectDay(Seg)">Seg</button>
+                        <button type="button" class="btn btn-outline-light custom-btn" id="Ter" name="Ter" onclick="selectDay(Ter)">Ter</button>
+                        <button type="button" class="btn btn-outline-light custom-btn" id="Qua" name="Qua" onclick="selectDay(Qua)">Qua</button>
+                        <button type="button" class="btn btn-outline-light custom-btn" id="Qui" name="Qui" onclick="selectDay(Qui)">Qui</button>
+                        <button type="button" class="btn btn-outline-light custom-btn" id="Sex" name="Sex" onclick="selectDay(Sex)">Sex</button>
+                        <button type="button" class="btn btn-outline-light custom-btn" id="Sab" name="Sab" onclick="selectDay(Sab)">Sab</button>
+                        <button type="button" class="btn btn-outline-light custom-btn" id="Dom" name="Dom" onclick="selectDay(Dom)">Dom</button>
+                    </div> 
+
                     <div class="addTime">
-                        <input type="time">
-                        <button>Cadastrar Novo Horario</button>
+                        <input type="time" id="hora">
+                        <button onclick="colect()">Cadastrar Novo Horario</button>
                     </div>
                     <div>
-                        <input type="checkbox" name="" id="">Horario de Retorno </input>
+                        <input type="checkbox" id="tipoHora">Horario de Retorno </input>
                     </div>
-                </form>
+
 
                         <div class="horariosTable">
                             <div class="" id="showTable">
@@ -80,18 +78,4 @@
 
 </body>
 <%- include('./partials/footer.ejs') %>
-    <script>
-        // função para estilzar a checkbox selecionada dinamicamente
-        function changeCardColor(cardId, checkboxId) {
-            let card = document.getElementById(cardId);
-            let checkbox = document.getElementById(checkboxId);
-
-
-            if (checkbox.checked) {
-                card.classList.add('selected-card');
-            } else {
-                card.classList.remove('selected-card');
-            }
-        }
-
-    </script>
+    <script src="/js/cadastroHora.js"></script>

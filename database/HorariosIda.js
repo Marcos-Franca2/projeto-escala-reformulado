@@ -11,7 +11,11 @@ const HorariosIda = connection.define('horariosIda',{ // criando uma tbela no BD
  diasemana: {
     type: sequelize.STRING,
     allowNull: false
- }
+ }, 
+ tipo: {
+   type: sequelize.STRING,
+   allowNull: false
+}
 });
  // impedindo de recriar a tabela
 HorariosIda.sync({force: false}).then(()=>{ // then te da um retorno no console

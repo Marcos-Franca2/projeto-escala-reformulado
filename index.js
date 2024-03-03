@@ -10,6 +10,7 @@ const DiasFeitos = require("./database/DiasFeitos");
 const port = 8080;
 const session = require('express-session');
 const {Op} = require('sequelize');
+const { format } = require("mysql2");
 
 connection
     .authenticate()
@@ -172,6 +173,31 @@ app.delete('/deletarMotorista/:matricula', async (req, res) => {
 
 app.get("/cadastroHora", autenticar, (req, res)=>{
     res.render("cadastro-hora")
+});
+
+app.post("/cadastradohorario", (req, res)=>{
+    const form = req.body;
+    const dia = form.dia;
+    const horario = form.horario;
+    const tipo = form.tipo;
+    if(tipo === "retorno"){
+        HorariosRetorno.create({
+            diasemana : dia,
+            horario: horario,
+            tipo: tipo
+        }).then(() => {
+            res.redirect("/cadastroHora");
+        });
+    }else{
+        HorariosIda.create({
+            diasemana : dia,
+            horario: horario,
+            tipo: tipo 
+        }).then(() => {
+            res.redirect("/cadastroHora");
+        });
+    }
+    
 });
 
 app.listen(8080, () => {
