@@ -15,22 +15,27 @@ function colect(){
     let diaSelect = $(".custom-btn.active").attr("id") // coletando o id do botao com a class active
     let horario = document.getElementById("hora").value
     let tipo = document.getElementById("tipoHora")
-    if(tipo.checked){
-        tipo = "retorno"
-    }else{
 
-         tipo = "ida"
-    }
-    let form = {
-        dia: diaSelect,
+    if(diaSelect == undefined ||horario == ""){
+        location.reload()
+    }else{
+        if(tipo.checked){
+            tipo = "retorno"
+        }else{
+            
+            tipo = "ida"
+        }
+        let form = {
+            dia: diaSelect,
         horario: horario,
         tipo: tipo
     }
     sendForm(form)
         return 
+    }
 }
-
-function sendForm(form){
+    
+    function sendForm(form){
     const config = {
         method:"POST",
         headers:{
@@ -43,6 +48,25 @@ function sendForm(form){
 
     fetch(url, config).then(response => response.json()).then(data => {
         console.log('Resposta do servidor:', data);
-    }) .catch(error => console.error('Erro:', error));
+        if (data.success) {
+            window.location.reload();
+        }
 
+    }) .catch(error => console.error('Erro:', error));
+}
+
+
+
+function changeCardColor(cardId, checkboxId) {
+    let card = document.getElementById(cardId);
+    let checkbox = document.getElementById(checkboxId);
+    
+
+    if (checkbox.checked) {
+        card.classList.add('selected-card');
+    } else {
+        card.classList.remove('selected-card');
+    }
+
+        selected = checkbox.id;
 }

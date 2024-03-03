@@ -40,7 +40,9 @@
                         <button onclick="colect()">Cadastrar Novo Horario</button>
                     </div>
                     <div>
-                        <input type="checkbox" id="tipoHora">Horario de Retorno </input>
+                       <label for="tipoHora">
+                           <input type="checkbox" id="tipoHora">Horario de Retorno </input>       
+                    </label>
                     </div>
 
 
@@ -49,17 +51,17 @@
                                     <div id="card-table">
                                         <H5>HORARIOS DO DIA</H5>
                                         <div class="container-table">
-                                            <ul class="horarios-ida">
+                                            <div class="horariosIda">
                                                 IDA
-                                                <li>11:00</li>
-                                                <li>12:00</li>
-                                                <li>13:00</li>
-                                            </ul>
-                                            <ul class="horarios-retorno">
+                                                <% HorariosIda.forEach(horarioI=>{ %>
+                                                    <label id="cardR<%= horarioI.id %>" class="card" for="R<%= horarioI.id %>"> <input type="checkbox" name="05:40" id="R<%= horarioI.id %>" onclick="changeCardColor('cardR<%= horarioI.id %>','R<%= horarioI.id %>')"hidden><%= horarioI.horario %></label>    
+                                               <% }) %>
+                                            </div>
+                                            <ul class="horariosRetono">
                                                 RETORNOS
-                                                <li>11:00</li>
-                                                <li>12:00</li>
-                                                <li>13:00</li>
+                                                <% HorariosRetorno.forEach(horarioR=>{ %>
+                                                    <label id="cardR<%= horarioR.id %>" class="card" for="R<%= horarioR.id %>"> <input type="checkbox" name="05:40" id="R<%= horarioR.id %>" onclick="changeCardColor('cardR<%= horarioR.id %>','R<%= horarioR.id %>')"hidden><%= horarioR.horario %></label>    
+                                               <% }) %>
                                             </ul>
                                         </div>
                                     </div>

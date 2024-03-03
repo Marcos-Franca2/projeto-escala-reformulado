@@ -5,7 +5,7 @@ const connection = require('./database');
 
 const HorariosIda = connection.define('horariosIda',{ // criando uma tbela no BD
  horario: {  // criando as colunas da tabela
-    type: sequelize.TIME,
+    type: sequelize.CHAR,
     allowNull: false
  },
  diasemana: {

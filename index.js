@@ -172,7 +172,13 @@ app.delete('/deletarMotorista/:matricula', async (req, res) => {
 
 
 app.get("/cadastroHora", autenticar, (req, res)=>{
-    res.render("cadastro-hora")
+    HorariosIda.findAll({raw:true}).then(HorariosIda=>{
+        var HorariosIda = HorariosIda
+        HorariosRetorno.findAll({raw:true}).then(HorariosRetorno=>{
+    
+            res.render("cadastro-hora", { HorariosRetorno: HorariosRetorno, HorariosIda: HorariosIda})
+        })
+    })
 });
 
 app.post("/cadastradohorario", (req, res)=>{
@@ -186,7 +192,7 @@ app.post("/cadastradohorario", (req, res)=>{
             horario: horario,
             tipo: tipo
         }).then(() => {
-            res.redirect("/cadastroHora");
+            res.json({ success: true });
         });
     }else{
         HorariosIda.create({
@@ -194,7 +200,7 @@ app.post("/cadastradohorario", (req, res)=>{
             horario: horario,
             tipo: tipo 
         }).then(() => {
-            res.redirect("/cadastroHora");
+            res.json({ success: true });
         });
     }
     
