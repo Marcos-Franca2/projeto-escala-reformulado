@@ -1,14 +1,15 @@
-/*colectDay()
+colectDay()
+var diaselect =""
 function colectDay() {
     var dataAtual = new Date().toISOString().split('T')[0]
     let date1 = new Date(dataAtual)
     var date2 = date1.getDay(); //coletando o dia da semana de acordo com seu index da semana (ex.Segunda-Feira = 0 )
     const diasDaSemana = ['Segunda Feira', 'Terça Feira', 'Quarta Feira', 'Quinta Feira', 'Sexta Feira', 'Sabado', 'Domingo'];
-    const diaselect = diasDaSemana[date2];// selecionado o dia correto pelo Array .
-    module.exports = diaselect
+    diaselect = diasDaSemana[date2];// selecionado o dia correto pelo Array .
+    sendDaySelect(diaselect)
     return diaselect;
 }
-*/
+
 
 
 
@@ -16,13 +17,30 @@ function colectDay() {
 function selectDay(dia){
     var day = dia.id;
     let diaDaSemana = dia.name
+     let indiceDia = dia.value
+    const diasDaSemana = ['Segunda Feira', 'Terça Feira', 'Quarta Feira', 'Quinta Feira', 'Sexta Feira', 'Sabado', 'Domingo']
+    diaselect = diasDaSemana[indiceDia];
     $(".btn").removeClass("active"); // jQuery qu represente o QuerySelectorAll
     $(`#${day}`).addClass("active");
     document.getElementById("text").innerHTML = `<h5>Horarios de ${diaDaSemana}</h5>`
     sendDay(diaDaSemana)
+    sendDaySelect(diaselect)
     return 
 };
-
+function sendDaySelect(dia){
+    if (dia) {
+        const url = `/cadastroHora?dia=${dia}`;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                // Faça algo com os dados recebidos
+                console.log('Resposta do servidor:', data);
+            })
+            .catch(error => console.error('Erro:', error));
+    } else {
+        console.error('Dia não definido. A requisição não será enviada.');
+    }
+}
 function sendDay(dia){
     const config = {
         method:"POST",
