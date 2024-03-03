@@ -11,7 +11,7 @@ const port = 8080;
 const session = require('express-session');
 const {Op} = require('sequelize');
 const { format } = require("mysql2");
-
+// const diaselect = require('./public/js/cadastroHora')
 connection
     .authenticate()
     .then(() => {// fazendo o teste se funcionou ou não a conexao
@@ -172,9 +172,9 @@ app.delete('/deletarMotorista/:matricula', async (req, res) => {
 
 
 app.get("/cadastroHora", autenticar, (req, res)=>{
-    HorariosIda.findAll({raw:true}).then(HorariosIda=>{
+    HorariosIda.findAll({raw:true, order:[["horario","ASC"]]}).then(HorariosIda=>{
         var HorariosIda = HorariosIda
-        HorariosRetorno.findAll({raw:true}).then(HorariosRetorno=>{
+        HorariosRetorno.findAll({raw:true, order:[["horario","ASC"]]}).then(HorariosRetorno=>{
     
             res.render("cadastro-hora", { HorariosRetorno: HorariosRetorno, HorariosIda: HorariosIda})
         })
@@ -204,6 +204,11 @@ app.post("/cadastradohorario", (req, res)=>{
         });
     }
     
+});
+
+app.post("/diaColect", (req, res)=>{
+    const form = req.body
+    const dia = req.dia
 });
 
 app.listen(8080, () => {

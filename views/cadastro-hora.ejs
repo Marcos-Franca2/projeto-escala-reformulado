@@ -26,13 +26,13 @@
 
                     <div class="diasSemana">
                         <h2>Selecione o dia</h2>
-                        <button type="button" class="btn btn-outline-light custom-btn" id="Seg" name="Seg" onclick="selectDay(Seg)">Seg</button>
-                        <button type="button" class="btn btn-outline-light custom-btn" id="Ter" name="Ter" onclick="selectDay(Ter)">Ter</button>
-                        <button type="button" class="btn btn-outline-light custom-btn" id="Qua" name="Qua" onclick="selectDay(Qua)">Qua</button>
-                        <button type="button" class="btn btn-outline-light custom-btn" id="Qui" name="Qui" onclick="selectDay(Qui)">Qui</button>
-                        <button type="button" class="btn btn-outline-light custom-btn" id="Sex" name="Sex" onclick="selectDay(Sex)">Sex</button>
-                        <button type="button" class="btn btn-outline-light custom-btn" id="Sab" name="Sab" onclick="selectDay(Sab)">Sab</button>
-                        <button type="button" class="btn btn-outline-light custom-btn" id="Dom" name="Dom" onclick="selectDay(Dom)">Dom</button>
+                        <button type="button" class="btn btn-outline-light custom-btn" id="Seg" name="Segunda Feira" onclick="selectDay(Seg)">Seg</button>
+                        <button type="button" class="btn btn-outline-light custom-btn" id="Ter" name="Terça Feira" onclick="selectDay(Ter)">Ter</button>
+                        <button type="button" class="btn btn-outline-light custom-btn" id="Qua" name="Quarta Feira" onclick="selectDay(Qua)">Qua</button>
+                        <button type="button" class="btn btn-outline-light custom-btn" id="Qui" name="Quinta Feira" onclick="selectDay(Qui)">Qui</button>
+                        <button type="button" class="btn btn-outline-light custom-btn" id="Sex" name="Sexta Feira" onclick="selectDay(Sex)">Sex</button>
+                        <button type="button" class="btn btn-outline-light custom-btn" id="Sab" name="Sabado" onclick="selectDay(Sab)">Sab</button>
+                        <button type="button" class="btn btn-outline-light custom-btn" id="Dom" name="Domingo" onclick="selectDay(Dom)">Dom</button>
                     </div> 
 
                     <div class="addTime">
@@ -49,12 +49,12 @@
                         <div class="horariosTable">
                             <div class="" id="showTable">
                                     <div id="card-table">
-                                        <H5>HORARIOS DO DIA</H5>
+                                     <div id="text"><H5>HORARIOS DO DIA</H5></div>   
                                         <div class="container-table">
                                             <div class="horariosIda">
                                                 IDA
                                                 <% HorariosIda.forEach(horarioI=>{ %>
-                                                    <label id="cardR<%= horarioI.id %>" class="card" for="R<%= horarioI.id %>"> <input type="checkbox" name="05:40" id="R<%= horarioI.id %>" onclick="changeCardColor('cardR<%= horarioI.id %>','R<%= horarioI.id %>')"hidden><%= horarioI.horario %></label>    
+                                                    <label id="cardI<%= horarioI.id %>" class="card" for="I<%= horarioI.id %>"> <input type="checkbox" name="05:40" id="I<%= horarioI.id %>" onclick="changeCardColor('cardI<%= horarioI.id %>','I<%= horarioI.id %>')"hidden><%= horarioI.horario %></label>    
                                                <% }) %>
                                             </div>
                                             <ul class="horariosRetono">
