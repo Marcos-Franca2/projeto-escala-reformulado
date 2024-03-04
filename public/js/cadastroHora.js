@@ -17,7 +17,7 @@ function colectDay() {
 function selectDay(dia){
     var day = dia.id;
     let diaDaSemana = dia.name
-     let indiceDia = dia.value
+    let indiceDia = dia.value
     const diasDaSemana = ['Segunda Feira', 'Terça Feira', 'Quarta Feira', 'Quinta Feira', 'Sexta Feira', 'Sabado', 'Domingo']
     diaselect = diasDaSemana[indiceDia];
     $(".btn").removeClass("active"); // jQuery qu represente o QuerySelectorAll
