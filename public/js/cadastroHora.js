@@ -1,119 +1,122 @@
-colectDay()
-var diaselect =""
+var diaselect = "";
+
 function colectDay() {
-    var dataAtual = new Date().toISOString().split('T')[0]
-    let date1 = new Date(dataAtual)
-    var date2 = date1.getDay(); //coletando o dia da semana de acordo com seu index da semana (ex.Segunda-Feira = 0 )
+    var dataAtual = new Date().toISOString().split('T')[0];
+    let date1 = new Date(dataAtual);
+    var date2 = date1.getDay();
     const diasDaSemana = ['Segunda Feira', 'Terça Feira', 'Quarta Feira', 'Quinta Feira', 'Sexta Feira', 'Sabado', 'Domingo'];
-    diaselect = diasDaSemana[date2];// selecionado o dia correto pelo Array .
-    sendDaySelect(diaselect)
+    diaselect = diasDaSemana[date2];
+    sendDaySelect(diaselect);
     return diaselect;
 }
 
+function selectDay(dia) {
+    const day = dia.id;
+    const diaDaSemana = dia.name;
+    const indiceDia = dia.value;
+    const diasDaSemana = ['Segunda Feira', 'Terça Feira', 'Quarta Feira', 'Quinta Feira', 'Sexta Feira', 'Sabado', 'Domingo'];
+    const diaselect = diasDaSemana[indiceDia];
 
-
-
-// aplica um stilo do bootsrap par o botão que recebeu um click se manter selecionado  
-function selectDay(dia){
-    var day = dia.id;
-    let diaDaSemana = dia.name
-    let indiceDia = dia.value
-    const diasDaSemana = ['Segunda Feira', 'Terça Feira', 'Quarta Feira', 'Quinta Feira', 'Sexta Feira', 'Sabado', 'Domingo']
-    diaselect = diasDaSemana[indiceDia];
-    $(".btn").removeClass("active"); // jQuery qu represente o QuerySelectorAll
+    $(".btn").removeClass("active");
     $(`#${day}`).addClass("active");
-    document.getElementById("text").innerHTML = `<h5>Horarios de ${diaDaSemana}</h5>`
-    sendDay(diaDaSemana)
-    sendDaySelect(diaselect)
-    return 
-};
-function sendDaySelect(dia){
+    $("#text").html(`<h5>Horarios de ${diaDaSemana}</h5>`);
+
+
+    sendDaySelect(diaselect, dia);
+}
+
+function sendDaySelect(dia, teste) {
     if (dia) {
-        const url = `/cadastroHora?dia=${dia}`;
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                // Faça algo com os dados recebidos
-                console.log('Resposta do servidor:', data);
-            })
-            .catch(error => console.error('Erro:', error));
-    } else {
-        console.error('Dia não definido. A requisição não será enviada.');
+        const day = (dia);
+
+        const config = {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ day }),
+        };
+
+        const url = "/diaColect";
+
+        fetch(url, config)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Resposta do servidor:', data);
+    
+            if (data.success) {
+                if (data.redirectUrl) {
+                    window.location.href = data.redirectUrl;
+                } else {
+                    window.location.reload();
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+        });
     }
 }
-function sendDay(dia){
-    const config = {
-        method:"POST",
-        headers:{
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dia),
-        
-    };
-    const url = "/diaColect";
 
-    fetch(url, config).then(response => response.json()).then(data => {
-        console.log('Resposta do servidor:', data);
-        if (data.success) {
-            window.location.reload();
-        }
+function colect() {
+    let diaSelect = $(".custom-btn.active").attr("name");
+    let horario = document.getElementById("hora").value;
+    let tipo = document.getElementById("tipoHora");
 
-    }) .catch(error => console.error('Erro:', error));
-}
-
-
-
-// coletar dados e enviar a proxima função
-function colect(){
-    let diaSelect = $(".custom-btn.active").attr("name") // coletando o id do botao com a class active
-    let horario = document.getElementById("hora").value
-    let tipo = document.getElementById("tipoHora")
-
-    if(diaSelect == undefined ||horario == ""){
-        location.reload()
-    }else{
-        if(tipo.checked){
-            tipo = "retorno"
-        }else{
-            
-            tipo = "ida"
+    if (diaSelect == undefined || horario == "") {
+        location.reload();
+    } else {
+        if (tipo.checked) {
+            tipo = "retorno";
+        } else {
+            tipo = "ida";
         }
         let form = {
             dia: diaSelect,
-        horario: horario,
-        tipo: tipo
-    }
-    sendForm(form)
-        return 
+            horario: horario,
+            tipo: tipo
+        };
+        sendForm(form);
+        return;
     }
 }
-    
-    function sendForm(form){
+
+function sendForm(form) {
     const config = {
-        method:"POST",
-        headers:{
+        method: "POST",
+        headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(form),
-        
     };
     const url = "/cadastradohorario";
 
-    fetch(url, config).then(response => response.json()).then(data => {
-        console.log('Resposta do servidor:', data);
-        if (data.success) {
-            window.location.reload();
-        }
-
-    }) .catch(error => console.error('Erro:', error));
+    fetch(url, config)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Resposta do servidor:', data);
+            if (data.success) {
+                window.location.reload();
+            }
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+        });
 }
-
-
 
 function changeCardColor(cardId, checkboxId) {
     let card = document.getElementById(cardId);
     let checkbox = document.getElementById(checkboxId);
-    
 
     if (checkbox.checked) {
         card.classList.add('selected-card');
@@ -121,5 +124,5 @@ function changeCardColor(cardId, checkboxId) {
         card.classList.remove('selected-card');
     }
 
-        selected = checkbox.id;
+    selected = checkbox.id;
 }
