@@ -171,19 +171,33 @@ app.delete('/deletarMotorista/:matricula', async (req, res) => {
 });
 
 
+app.get("/cadastroHora", autenticar, (req, res) => {
+    let diasemana = req.query.dia || "Segunda Feira";
+  //  diasemana = String(diasemana);
 
-app.get("/cadastroHora", autenticar, (req, res)=>{
-    let diasemana = "Segunda Feira"
-    diasemana = req.query.dia;
-    diasemana = String(diasemana)
-    console.log(diasemana)
-    HorariosIda.findAll({where: {diasemana:"Domingo"}, raw:true, order:[["horario","ASC"]]}).then(HorariosIda=>{
-        var HorariosIda = HorariosIda
-        HorariosRetorno.findAll({where: {diasemana:"Domingo"}, raw:true, order:[["horario","ASC"]]}).then(HorariosRetorno=>{
-    
-            res.render("cadastro-hora", { HorariosRetorno: HorariosRetorno, HorariosIda: HorariosIda})
-        })
-    })
+    console.log(diasemana);
+
+    HorariosIda.findAll({
+        where: { diasemana: diasemana },
+        raw: true,
+        order: [["horario", "ASC"]]
+    }).then(HorariosIda => {
+        console.log(HorariosIda)
+        HorariosRetorno.findAll({
+            where: { diasemana: diasemana },
+            raw: true,
+            order: [["horario", "ASC"]]
+        }).then(HorariosRetorno => {
+            console.log(HorariosRetorno)
+            res.render("cadastro-hora", { HorariosRetorno, HorariosIda });
+        }).catch(error => {
+            console.error('Erro ao obter horários de retorno:', error);
+            res.status(500).send('Erro interno do servidor');
+        });
+    }).catch(error => {
+        console.error('Erro ao obter horários de ida:', error);
+        res.status(500).send('Erro interno do servidor');
+    });
 });
 
 app.post("/cadastradohorario", (req, res)=>{
@@ -211,9 +225,13 @@ app.post("/cadastradohorario", (req, res)=>{
     
 });
 
-app.post("/diaColect", (req, res)=>{
-    const form = req.body
-    const dia = req.dia
+app.post("/diaColect", (req, res) => {
+    const { day } = req.body;
+    console.log(day); // Verifica o valor recebido
+
+    // Faz o que precisar com o valor 'day'
+
+    res.json({ success: true, redirectUrl: `/cadastroHora?dia=${day}` }); // Ou envia qualquer outra resposta necessária
 });
 
 app.listen(8080, () => {
