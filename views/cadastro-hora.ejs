@@ -52,13 +52,15 @@
                                      <div id="text"><H5>HORARIOS DO DIA</H5></div>   
                                         <div class="container-table">
                                             <div class="horariosIda">
-                                                IDA
+                                               <h5>IDA</h5> 
+                                                <hr>
                                                 <% HorariosIda.forEach(horarioI=>{ %>
                                                     <label id="cardI<%= horarioI.id %>" class="card" for="I<%= horarioI.id %>"> <input type="checkbox" name="05:40" id="I<%= horarioI.id %>" onclick="changeCardColor('cardI<%= horarioI.id %>','I<%= horarioI.id %>')"hidden><%= horarioI.horario %></label>    
                                                <% }) %>
                                             </div>
                                             <ul class="horariosRetono">
-                                                RETORNOS
+                                               <h5>RETORNOS</h5>
+                                               <hr>
                                                 <% HorariosRetorno.forEach(horarioR=>{ %>
                                                     <label id="cardR<%= horarioR.id %>" class="card" for="R<%= horarioR.id %>"> <input type="checkbox" name="05:40" id="R<%= horarioR.id %>" onclick="changeCardColor('cardR<%= horarioR.id %>','R<%= horarioR.id %>')"hidden><%= horarioR.horario %></label>    
                                                <% }) %>

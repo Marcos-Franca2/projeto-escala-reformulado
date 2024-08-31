@@ -179,7 +179,7 @@ app.get("/cadastroHora", autenticar, (req, res)=>{
     console.log(diasemana)
     HorariosIda.findAll({where: {diasemana:"Domingo"}, raw:true, order:[["horario","ASC"]]}).then(HorariosIda=>{
         var HorariosIda = HorariosIda
-        HorariosRetorno.findAll({where: {diasemana:diasemana}, raw:true, order:[["horario","ASC"]]}).then(HorariosRetorno=>{
+        HorariosRetorno.findAll({where: {diasemana:"Domingo"}, raw:true, order:[["horario","ASC"]]}).then(HorariosRetorno=>{
     
             res.render("cadastro-hora", { HorariosRetorno: HorariosRetorno, HorariosIda: HorariosIda})
         })
